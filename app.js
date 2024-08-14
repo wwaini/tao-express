@@ -1,5 +1,6 @@
 // nodemon node热更新的插件，修改内容然后刷新
 const query = require('./data/getPersonMsg');
+const querysSelect = require('./data/getSelectOptions');
 const express = require('express')
 const app = express()
 // 然后就可以直接写接口啦
@@ -78,11 +79,23 @@ app.get('/getOptionsAndDeepOptions', (req, res) => { // 当请求为get请求，
   }
   res.send(Dict[cityVal])
 })
-app.get('/getSelectOptions', (req, res) => { // 当请求为get请求，url路径为 / 的时候，返回如下数据
+app.get('/getSelectOptions1', (req, res) => { // 当请求为get请求，url路径为 / 的时候，返回如下数据
   res.header('Access-Control-Allow-Origin', '*');
   let pageIndex = req.query.pageIndex // 多少页 2
   let pageSize = req.query.pageSize // 当页多少条 10
-  res.send(query(pageIndex, pageSize))
+  res.send(querysSelect(pageIndex, pageSize))
+})
+app.get('/getSelectOptions2', (req, res) => { // 当请求为get请求，url路径为 / 的时候，返回如下数据
+  res.header('Access-Control-Allow-Origin', '*');
+  let pageIndex = req.query.pageIndex // 多少页 2
+  let pageSize = req.query.pageSize // 当页多少条 10
+  res.send(querysSelect(pageIndex, pageSize))
+})
+app.get('/getSelectOptions3', (req, res) => { // 当请求为get请求，url路径为 / 的时候，返回如下数据
+  res.header('Access-Control-Allow-Origin', '*');
+  let pageIndex = req.query.pageIndex // 多少页 2
+  let pageSize = req.query.pageSize // 当页多少条 10
+  res.send(querysSelect(pageIndex, pageSize))
 })
 
 // 在9999端口上启动后端服务
